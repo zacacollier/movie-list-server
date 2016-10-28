@@ -26,17 +26,22 @@ app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/contacts', (req, res, next) => {
+app.get('/api/contacts', (req, res, next) => {
   ContactModel.find().exec()
     .then(contacts => res.json(contacts))
     .catch(err => next(err));
 });
 
-app.post('/contacts', (req, res, next) => {
+app.post('/api/contacts', (req, res, next) => {
   const { avatar, name, occupation } = req.body;
   const contact = new ContactModel({ avatar, name, occupation }).save()
     .then(contact => res.json(contact))
     .catch(err => next(err));
+});
+
+app.all('*', (req, res, next) => {
+  req.status = 401;
+  return res.json(`Not found. Couldn't find it. It's not here!`);
 });
 
 app.use((err, req, res, next) => {
