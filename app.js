@@ -16,6 +16,12 @@ mongoose.connect(databaseUrl)
   });
 
 const app = express();
+
+const env = process.env.NODE_ENV || 'development';
+const port = process.env.PORT || 3001;
+
+app.set('port', port);
+
 app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
@@ -38,6 +44,5 @@ app.use((err, req, res, next) => {
   return res.json('Unable to process request');
 });
 
-const env = process.env.NODE_ENV || 'development';
-const port = process.env.PORT || 3001;
+
 app.listen(port, () => console.log(chalk.blue(`[express] Listening on port: ${port} [${env}]`)))
