@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const chalk = require('chalk');
 const ContactModel = require('./models/ContactModel');
 
-const databaseUrl = process.env.MONGO_DB || 'mongodb://localhost/contact-list-server';
+const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/contact-list-server';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(databaseUrl)
