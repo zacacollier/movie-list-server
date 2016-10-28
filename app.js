@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
@@ -15,7 +16,7 @@ mongoose.connect(databaseUrl)
   });
 
 const app = express();
-
+app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
 
