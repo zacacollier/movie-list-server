@@ -22,10 +22,11 @@ module.exports = {
 
   update(req, res, next) {
     const { avatar, name, occupation } = req.body;
+
     ContactModel.findOneAndUpdate(
       { _id: req.params.id },
       { avatar, name, occupation },
-      { new: true }
+      { new: true, runValidators: true }
     ).exec()
       .then(contact => res.json(contact))
       .catch(next);
