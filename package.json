@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "AUTH_SECRET=tombstone_is_a_great_movie nodemon app.js",
     "start": "node app.js"
   },
   "engines": {
