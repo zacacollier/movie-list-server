@@ -25,7 +25,7 @@ app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
 
-const contactsRoutes = require('./routes/contactsRoutes');
+const contactsRoutes = require('./routes/ContactsRoutes');
 
 app.use('/api/contacts', contactsRoutes);
 
