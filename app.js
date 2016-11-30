@@ -35,8 +35,7 @@ app.all('*', (req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  res.status = 500;
-  return res.json(`Unable to process request. ERROR: ${err}`);
+    res.status(500).json(`Unable to process request. ERROR: ${err}`);
 });
 
 app.listen(port, () => console.log(chalk.blue(`[express] Listening on port: ${port} [${env}]`)))
