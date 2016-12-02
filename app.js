@@ -17,7 +17,7 @@ mongoose.connect(databaseUrl)
 const app = express();
 
 const env = process.env.NODE_ENV || 'development';
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 9001;
 
 app.set('port', port);
 
