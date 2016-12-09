@@ -1,20 +1,20 @@
 const mongoose = require('mongoose');
 
-const contactSchema = new mongoose.Schema({
-  avatar: {
+const movieSchema = new mongoose.Schema({
+  imdbID: {
     type: String,
     required: true,
   },
 
-  name: {
+  Title: {
     type: String,
     required: true,
   },
 
-  occupation: {
+  Poster: {
     type: String,
     required: true,
   },
 });
 
-module.exports = mongoose.model('Contact', contactSchema);
+module.exports = mongoose.model('Movie', movieSchema);

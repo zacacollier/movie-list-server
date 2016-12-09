@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
-const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/contact-list-server';
+const databaseUrl = process.env.MONGODB_URI || 'mongodb://localhost/movie-list-server';
 
 mongoose.Promise = global.Promise;
 mongoose.connect(databaseUrl)
@@ -25,9 +25,9 @@ app.use(compression());
 app.use(cors());
 app.use(bodyParser.json());
 
-const contactsRoutes = require('./routes/ContactsRoutes');
+const MovieRoutes = require('./routes/MovieRoutes');
 
-app.use('/api/contacts', contactsRoutes);
+app.use('/api/movies', MovieRoutes);
 
 app.all('*', (req, res, next) => {
   req.status = 401;

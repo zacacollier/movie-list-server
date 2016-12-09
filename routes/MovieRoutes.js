@@ -1,5 +1,5 @@
 const express = require('express');
-const ContactsController = require('../controllers/ContactsController');
+const MoviesController = require('../controllers/MoviesController');
 
 const router = express.Router();
 
@@ -14,14 +14,14 @@ const authMiddleware = (req, res, next) => {
   return next();
 };
 
-router.get('/', ContactsController.list);
+router.get('/', MoviesController.list);
 
-router.get('/:id', ContactsController.show);
+router.get('/:id', MoviesController.show);
 
-router.post('/', authMiddleware, ContactsController.create);
+router.post('/', authMiddleware, MoviesController.create);
 
-router.put('/:id', authMiddleware, ContactsController.update);
+router.put('/:id', authMiddleware, MoviesController.update);
 
-router.delete('/:id', authMiddleware, ContactsController.remove);
+router.delete('/:id', authMiddleware, MoviesController.remove);
 
 module.exports = router;
