@@ -16,12 +16,12 @@ const authMiddleware = (req, res, next) => {
 
 router.get('/', MoviesController.list);
 
+router.post('/', MoviesController.create);
+
 router.get('/:id', MoviesController.show);
 
-router.post('/', authMiddleware, MoviesController.create);
+router.put('/:id',  MoviesController.update);
 
-router.put('/:id', authMiddleware, MoviesController.update);
-
-router.delete('/:id', authMiddleware, MoviesController.remove);
+router.delete('/:id', MoviesController.remove);
 
 module.exports = router;
