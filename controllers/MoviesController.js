@@ -16,7 +16,7 @@ module.exports = {
 
   create(req, res, next) {
     const { imdbID, Title, Poster } = req.body;
-    const movie = new MoviesModel({ imdbID, Title, Poster }).save()
+      const movie = new MovieListModel({ children: { imdbID, Title, Poster }}).save()
       .then(movie => res.json(movie))
       .catch(next);
   },
