@@ -1,21 +1,22 @@
-const MovieModel = require('../models/MovieModel');
+const MovieListModel = require('../models/MovieListModel');
+const MoviesModel = require('../models/MoviesModel.js')
 
 module.exports = {
   list(req, res, next) {
-    MovieModel.find().exec()
+    MoviesModel.find().exec()
       .then(movies => res.json(movies))
       .catch(next);
   },
 
   show(req, res, next) {
-    MovieModel.findById(req.params.id).exec()
+    MoviesModel.findById(req.params.id).exec()
       .then(movie => res.json(movie))
       .catch(next);
   },
 
   create(req, res, next) {
     const { imdbID, Title, Poster } = req.body;
-    const movie = new MovieModel({ imdbID, Title, Poster }).save()
+    const movie = new MoviesModel({ imdbID, Title, Poster }).save()
       .then(movie => res.json(movie))
       .catch(next);
   },
@@ -23,7 +24,7 @@ module.exports = {
   update(req, res, next) {
     const { imdbID, Title, Poster } = req.body;
 
-    MovieModel.findOneAndUpdate(
+    MoviesModel.findOneAndUpdate(
       { _id: req.params.id },
       { imdbID, Title, Poster },
       { new: true, runValidators: true }
@@ -33,7 +34,7 @@ module.exports = {
   },
 
   remove(req, res, next) {
-    MovieModel.findOneAndRemove({ _id: req.params.id }).exec()
+    MoviesModel.findOneAndRemove({ _id: req.params.id }).exec()
       .then(movie => res.json(movie))
       .catch(next);
   }
